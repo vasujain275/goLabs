@@ -1,6 +1,5 @@
 # Go Learning Labs 🚀
 
-```
 This repository contains my solutions for the weekly labs as I learn the Go programming language.
 
 ## Repository Structure
@@ -89,4 +88,3 @@ The repository is organized by week, with each lab task in its own sub-directory
 
 - [ ] **Write a Table-Driven Test:** Write a table-driven test `TestDivide` for the `calculator.Divide` function. Include test cases for a valid division and division by zero.
 - [ ] **Test Logic with a Mock:** Write a business logic function that uses a `DataStore` interface. Write a test that injects a mock `DataStore` to verify the logic without any real I/O.
-```
