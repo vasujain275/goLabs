@@ -1,90 +1,77 @@
-# Go Learning Labs 🚀
+# Go Professional Backend Labs 🚀
 
-This repository contains my solutions for the weekly labs as I learn the Go programming language.
-
-## Repository Structure
-
-The repository is organized by week, with each lab task in its own sub-directory.
-
-    goLabs/
-    ├── README.md
-    ├── week1/
-    │   ├── 01-fizzbuzz/
-    │   └── ...
-    ├── week2/
-    │   └── ...
-    └── ...
+This repository contains my solutions for the weekly labs and mini-projects focused on mastering Go for professional backend development, based on my internship preparation roadmap.
 
 ---
 
-## 🎯 Week 1: Go Fundamentals & Data Structures
+## 🎯 Week 1: Go Fundamentals & Structured Code
 
-**Topics Covered:** Go Modules, variables, basic types, control flow, arrays, slices, maps, `range` keyword.
+**Topics Covered:** Go Modules, variables, control flow, arrays, slices, maps, `range`, structs, pointers, advanced functions (variadic, multiple returns), packages, `PascalCase` vs `camelCase`.
 
-### 💻 Labs
+### 💻 Labs & Projects
 
-- [ ] **FizzBuzz Program:** A Go program that correctly prints numbers 1-100, replacing multiples of 3 with "Fizz", 5 with "Buzz", and both with "FizzBuzz".
-- [ ] **Find the Maximum Value in a Slice:** A function `FindMax(numbers []int) int` that correctly returns the largest integer from a given slice.
-- [ ] **Implement a Simple Stack:** A `Stack` type implemented using a slice with `Push(item int)`, `Pop() (int, error)`, and `Peek() (int, error)` methods. Popping or peeking from an empty stack returns an error.
-- [ ] **Word Frequency Counter:** A program that takes a string and prints the frequency of each word using a map (case-insensitive).
-
----
-
-## 🎯 Week 2: Structuring Code & Data
-
-**Topics Covered:** Structs, pointers, advanced functions (variadic, multiple returns), packages, `PascalCase` vs `camelCase`.
-
-### 💻 Labs
-
-- [ ] **Define a `User` Struct:** Define a `User` struct with fields `ID (string)`, `FirstName (string)`, `LastName (string)`, and `IsActive (bool)`.
-- [ ] **Create a Pointer Receiver Method:** Create a method `Deactivate()` with a pointer receiver `(*User)` that sets the user's `IsActive` field to `false`.
-- [ ] **Build a `calculator` Package:** Create a new directory and package named `calculator` containing exported functions `Add`, `Subtract`, `Multiply`, and `Divide`.
-- [ ] **Use the Custom Package:** The `main` package successfully imports the `calculator` package and uses its functions to perform and print calculations.
+- [ ] **Task: Implement a Word Frequency Counter.**
+  - **DoD:** A program takes a string and prints the frequency of each word using a map. The count is case-insensitive and ignores punctuation.
+- [ ] **Task: Define a `User` Model.**
+  - **DoD:** A `User` struct is defined with fields `ID (string)`, `FirstName (string)`, `LastName (string)`, `Email (string)`, and `IsActive (bool)`. A function `NewUser(firstName, lastName, email string) (*User, error)` is created that validates input (e.g., non-empty names, valid email format) and returns a new user pointer or an error.
+- [ ] **Task: Create a Pointer Receiver Method.**
+  - **DoD:** A method `Deactivate()` with a pointer receiver `(*User)` is created. When called, it sets the user's `IsActive` field to `false`. Another method `FullName() string` with a value receiver returns the user's full name.
+- [ ] **Task: Build a `utils` Package.**
+  - **DoD:** A new directory and package named `utils` is created. It contains exported functions for common tasks, like `GenerateUUID()` and `IsValidEmail(email string) bool`.
+- [ ] **Task: Read "Effective Go" - Data Sections.**
+  - **DoD:** You have read and taken notes on the "Data" sections of Effective Go, including slices, maps, and allocation.
 
 ---
 
-## 🎯 Week 3: Interfaces, Methods & Idiomatic Go
+## 🎯 Week 2: Interfaces, Errors & Web Services with `net/http`
 
-**Topics Covered:** Methods, interfaces, implicit implementation, the `error` type, JSON marshalling/unmarshalling.
+**Topics Covered:** Methods, interfaces, implicit implementation, the `error` type, custom errors, JSON marshalling/unmarshalling, `net/http` package.
 
-### 💻 Labs
+### 💻 Labs & Projects
 
-- [ ] **Define a `Shape` Interface:** Define a `Shape` interface with one method: `Area() float64`.
-- [ ] **Implement the `Shape` Interface:** Create `Circle` and `Rectangle` structs, each with methods that correctly implement the `Shape` interface.
-- [ ] **Demonstrate Polymorphism:** A function `PrintTotalArea(shapes ...Shape)` calculates and prints the total area of any combination of `Circle` and `Rectangle` shapes passed to it.
-- [ ] **Implement Error Handling:** Modify the `calculator.Divide` function to return `(float64, error)`, returning a non-nil error for division by zero.
-- [ ] **Mini-Project 1: CLI Todo List Manager:** A program that runs from the CLI (`add`, `list`, `complete`), uses a `Task` struct, and persists the list to `tasks.json` on every change.
-
----
-
-## 🎯 Week 4: Concurrency Fundamentals
-
-**Topics Covered:** Goroutines, `sync.WaitGroup`, race conditions, `sync.Mutex`, `sync/atomic`.
-
-### 💻 Labs
-
-- [ ] **Concurrent URL Downloader:** A program takes a list of URLs, downloads their contents concurrently using goroutines, and uses a `WaitGroup` to wait for all downloads to finish.
-- [ ] **Demonstrate and Fix a Race Condition:** Write a program where 1000 goroutines increment a shared counter. First, show the incorrect final value (the race condition), then fix it using a `sync.Mutex` so it correctly prints `1000`.
+- [ ] **Task: Define a `DataStore` Interface.**
+  - **DoD:** A `DataStore` interface is defined with methods like `GetUser(id string) (*User, error)` and `CreateUser(user *User) error`.
+- [ ] **Task: Implement the `DataStore` Interface with a `MemoryStore`.**
+  - **DoD:** A `MemoryStore` struct (using a map) is created that correctly implements the `DataStore` interface. The methods handle cases like a user not being found by returning a custom error.
+- [ ] **Task: Build a Basic HTTP Server.**
+  - **DoD:** A server running on port 8080 uses `http.ServeMux` to handle routes. `GET /health` returns a `200 OK` with a JSON body `{"status": "up"}`.
+- [ ] **Task: Create a JSON API Endpoint.**
+  - **DoD:** A `userHandler` struct is created that depends on your `DataStore` interface. It handles `POST /users` by decoding a JSON request body into a `User` struct and using the `DataStore` to save it. It returns a `201 Created` status.
+- [ ] **Mini-Project: `go-shortener` - A URL Shortening Web Service**
+  - **DoD:** A web service built with only the `net/http` package. `POST /shorten` accepts a JSON body `{"url": "long_url"}` and returns `{"short_code": "xyz123"}`. `GET /{short_code}` redirects the user to the original long URL with a `302 Found` status. Data is stored in-memory using your `MemoryStore` implementation. All endpoints have structured logging.
 
 ---
 
-## 🎯 Week 5: Advanced Concurrency & Communication
+## 🎯 Week 3: Mastering Concurrency
 
-**Topics Covered:** Channels (buffered/unbuffered), `select` statement, `range` over channels, worker pools.
+**Topics Covered:** Goroutines, `sync.WaitGroup`, race conditions, `sync.Mutex`, `sync.RWMutex`, channels (buffered/unbuffered), `select` statement, worker pools.
 
-### 💻 Labs
+### 💻 Labs & Projects
 
-- [ ] **Producer-Consumer with a Buffered Channel:** One goroutine (producer) sends 10 numbers to a buffered channel. A second goroutine (consumer) reads and prints them without deadlocking.
-- [ ] **`select` with a Timeout:** A goroutine sends a message to a channel after a 3-second delay. The `main` goroutine's `select` statement waits for the message but will time out after 2 seconds.
-- [ ] **Implement a Worker Pool:** Implement a worker pool with 3 goroutines. Create a "jobs" channel to send 10 tasks, which the workers receive and process.
+- [ ] **Task: Concurrent Map Writes (The Wrong Way and The Right Way).**
+  - **DoD:** First, write a program where multiple goroutines write to a shared map, demonstrating the race condition with `go run -race`. Second, fix it using `sync.RWMutex`.
+- [ ] **Task: Implement a Worker Pool.**
+  - **DoD:** A worker pool with 4 goroutines is implemented to process a series of "jobs". Goroutines receive tasks from a `jobs` channel and send results to a `results` channel. The main function waits for all results before exiting.
+- [ ] **Task: `select` with Cancellation Context.**
+  - **DoD:** A function takes a `context.Context` and a list of URLs. It launches a goroutine for each URL fetch. It uses a `select` statement to return the first successful result while immediately cancelling all other in-flight requests using the context.
+- [ ] **Mini-Project: `go-grep` - A Concurrent Log File Searcher**
+  - **DoD:** A CLI tool `go-grep <pattern> <file1> [file2...]`. It searches for the pattern in multiple files concurrently. Each file is processed by a separate goroutine. Results are sent over a channel to a single "printer" goroutine to avoid interleaved output. A `sync.WaitGroup` ensures the program waits for all files to be processed.
 
 ---
 
-## 🎯 Week 6: Testing & Project Structure
+## 🎯 Week 4: Professional Testing, Tooling & Project Structure
 
-**Topics Covered:** `testing` package, unit tests, table-driven tests, mocking with interfaces, benchmarking.
+**Topics Covered:** `testing` package, unit tests, table-driven tests, mocking with interfaces, benchmarking with `testing.B`, profiling with `pprof`.
 
-### 💻 Labs
+### 💻 Labs & Projects
 
-- [ ] **Write a Table-Driven Test:** Write a table-driven test `TestDivide` for the `calculator.Divide` function. Include test cases for a valid division and division by zero.
-- [ ] **Test Logic with a Mock:** Write a business logic function that uses a `DataStore` interface. Write a test that injects a mock `DataStore` to verify the logic without any real I/O.
+- [ ] **Task: Write a Table-Driven Test.**
+  - **DoD:** A table-driven test is written for a `utils.IsValidEmail` function, covering multiple valid and invalid email formats.
+- [ ] **Task: Test the `go-shortener` API Handler with a Mock.**
+  - **DoD:** A unit test for your `POST /shorten` handler is written. It uses a mock `DataStore` to simulate success and failure cases without needing a real web server. It also uses `net/http/httptest` to check the HTTP status code and response body.
+- [ ] **Task: Write a Benchmark Test.**
+  - **DoD:** A benchmark test `BenchmarkShortenURL` is created for your core URL shortening logic to measure its performance.
+- [ ] **Task: Profile a CPU-intensive function with `pprof`.**
+  - **DoD:** You write a function that performs a computationally expensive task (e.g., calculating many Fibonacci numbers). You use `pprof` to generate a CPU profile and can identify the bottleneck.
+- [ ] **Mini-Project: `go-chat` - A Simple TCP Chat Server**
+  - **DoD:** A TCP server that accepts multiple client connections. Each connection is handled in its own goroutine. Messages from one client are broadcast to all others. Channels are used to manage connections and messages safely. The project is structured logically with `server`, `client`, and `main` packages and has at least 50% test coverage.
