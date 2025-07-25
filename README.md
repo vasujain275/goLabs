@@ -12,13 +12,13 @@ This repository contains my solutions for the weekly labs and mini-projects focu
 
 - [x] **Task: Implement a Word Frequency Counter.**
   - **DoD:** A program takes a string and prints the frequency of each word using a map. The count is case-insensitive and ignores punctuation.
-- [ ] **Task: Define a `User` Model.**
+- [x] **Task: Define a `User` Model.**
   - **DoD:** A `User` struct is defined with fields `ID (string)`, `FirstName (string)`, `LastName (string)`, `Email (string)`, and `IsActive (bool)`. A function `NewUser(firstName, lastName, email string) (*User, error)` is created that validates input (e.g., non-empty names, valid email format) and returns a new user pointer or an error.
-- [ ] **Task: Create a Pointer Receiver Method.**
+- [x] **Task: Create a Pointer Receiver Method.**
   - **DoD:** A method `Deactivate()` with a pointer receiver `(*User)` is created. When called, it sets the user's `IsActive` field to `false`. Another method `FullName() string` with a value receiver returns the user's full name.
-- [ ] **Task: Build a `utils` Package.**
+- [x] **Task: Build a `utils` Package.**
   - **DoD:** A new directory and package named `utils` is created. It contains exported functions for common tasks, like `GenerateUUID()` and `IsValidEmail(email string) bool`.
-- [ ] **Task: Read "Effective Go" - Data Sections.**
+- [x] **Task: Read "Effective Go" - Data Sections.**
   - **DoD:** You have read and taken notes on the "Data" sections of Effective Go, including slices, maps, and allocation.
 
 ---
