@@ -10,7 +10,7 @@ This repository contains my solutions for the weekly labs and mini-projects focu
 
 ### 💻 Labs & Projects
 
-- [ ] **Task: Implement a Word Frequency Counter.**
+- [x] **Task: Implement a Word Frequency Counter.**
   - **DoD:** A program takes a string and prints the frequency of each word using a map. The count is case-insensitive and ignores punctuation.
 - [ ] **Task: Define a `User` Model.**
   - **DoD:** A `User` struct is defined with fields `ID (string)`, `FirstName (string)`, `LastName (string)`, `Email (string)`, and `IsActive (bool)`. A function `NewUser(firstName, lastName, email string) (*User, error)` is created that validates input (e.g., non-empty names, valid email format) and returns a new user pointer or an error.
