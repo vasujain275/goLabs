@@ -29,9 +29,9 @@ This repository contains my solutions for the weekly labs and mini-projects focu
 
 ### 💻 Labs & Projects
 
-- [ ] **Task: Define a `DataStore` Interface.**
+- [x] **Task: Define a `DataStore` Interface.**
   - **DoD:** A `DataStore` interface is defined with methods like `GetUser(id string) (*User, error)` and `CreateUser(user *User) error`.
-- [ ] **Task: Implement the `DataStore` Interface with a `MemoryStore`.**
+- [x] **Task: Implement the `DataStore` Interface with a `MemoryStore`.**
   - **DoD:** A `MemoryStore` struct (using a map) is created that correctly implements the `DataStore` interface. The methods handle cases like a user not being found by returning a custom error.
 - [ ] **Task: Build a Basic HTTP Server.**
   - **DoD:** A server running on port 8080 uses `http.ServeMux` to handle routes. `GET /health` returns a `200 OK` with a JSON body `{"status": "up"}`.
