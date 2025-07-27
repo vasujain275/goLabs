@@ -33,9 +33,9 @@ This repository contains my solutions for the weekly labs and mini-projects focu
   - **DoD:** A `DataStore` interface is defined with methods like `GetUser(id string) (*User, error)` and `CreateUser(user *User) error`.
 - [x] **Task: Implement the `DataStore` Interface with a `MemoryStore`.**
   - **DoD:** A `MemoryStore` struct (using a map) is created that correctly implements the `DataStore` interface. The methods handle cases like a user not being found by returning a custom error.
-- [ ] **Task: Build a Basic HTTP Server.**
+- [x] **Task: Build a Basic HTTP Server.**
   - **DoD:** A server running on port 8080 uses `http.ServeMux` to handle routes. `GET /health` returns a `200 OK` with a JSON body `{"status": "up"}`.
-- [ ] **Task: Create a JSON API Endpoint.**
+- [x] **Task: Create a JSON API Endpoint.**
   - **DoD:** A `userHandler` struct is created that depends on your `DataStore` interface. It handles `POST /users` by decoding a JSON request body into a `User` struct and using the `DataStore` to save it. It returns a `201 Created` status.
 - [ ] **Mini-Project: `go-shortener` - A URL Shortening Web Service**
   - **DoD:** A web service built with only the `net/http` package. `POST /shorten` accepts a JSON body `{"url": "long_url"}` and returns `{"short_code": "xyz123"}`. `GET /{short_code}` redirects the user to the original long URL with a `302 Found` status. Data is stored in-memory using your `MemoryStore` implementation. All endpoints have structured logging.
